@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SprinGo: Интерактивные истории · Interactive Stories</title>
+  <meta name="description" content="SprinGo — бесплатный сборник интерактивных историй для iPhone. Первая история — «Пепел и стекло». Без рекламы, покупок и регистрации. Поддержка и правовая информация.">
+  <meta property="og:title" content="SprinGo: Интерактивные истории">
+  <meta property="og:description" content="Сборник интерактивных историй для iPhone. Первая история — «Пепел и стекло»: правь свайпами. Бесплатно и без рекламы.">
+  <meta name="theme-color" content="#b0222e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b0222e'/%3E%3Cpath d='M32 32c-5-7-9-11-14-11a11 11 0 0 0 0 22c5 0 9-4 14-11s9-11 14-11a11 11 0 0 1 0 22c-5 0-9-4-14-11z' fill='none' stroke='%23e9ebee' stroke-width='5'/%3E%3C/svg%3E">
+  <style>
+    /* SprinGo — сайт в духе счётной книги регента: бумага, тушь, серебро и красное стекло. */
+    :root {
+      --paper: #efe9dd;
+      --paper-2: #e5ddcc;
+      --card: #fbf8f1;
+      --ink: #1b1716;
+      --ink-soft: #50463f;
+      --rule: rgba(27, 23, 22, 0.06);
+      --glass: #b0222e;
+      --accent-text: #b0222e;
+      --silver: #c7cbd1;
+      --band-accent: #ff7a83;
+      --line: 3px solid var(--ink);
+      --shadow: 6px 6px 0 var(--ink);
+      --shadow-small: 4px 4px 0 var(--ink);
+      --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #131015;
+        --paper-2: #1c181f;
+        --card: #1b171d;
+        --ink: #ede6da;
+        --ink-soft: #b8afa3;
+        --rule: rgba(237, 230, 218, 0.04);
+        --glass: #d23a46;
+        --accent-text: #ef6f79;
+        --band-accent: #a01d29;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background-color: var(--paper);
+      background-image: linear-gradient(var(--rule) 1px, transparent 1px);
+      background-size: 100% 32px;
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
+    .wrap { width: min(1180px, 100% - 32px); margin: 0 auto; }
+    [id] { scroll-margin-top: 96px; }
+
+    /* Шапка */
+    .top { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 70px; padding: 10px 0; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-cell { width: 46px; height: 46px; flex: none; border: var(--line); background: var(--glass); display: grid; place-items: center; }
+    .logo-cell svg { width: 30px; height: 30px; }
+    .logo-name { font-family: var(--display); font-weight: 700; font-size: 22px; }
+    .lang { display: flex; gap: 6px; }
+    .lang a { text-decoration: none; font-weight: 600; font-size: 15px; padding: 8px 12px; border: 2px solid var(--ink); background: var(--card); }
+    .lang a:hover { background: var(--silver); color: #1b1716; }
+    @media (max-width: 420px) {
+      .logo-name { font-size: 19px; }
+      .lang a { padding: 7px 9px; font-size: 14px; }
+    }
+
+    /* Первый экран */
+    .hero { padding: 64px 0 56px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    @media (max-width: 960px) { .hero .wrap { grid-template-columns: 1fr; } }
+    .kicker {
+      display: inline-block; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--ink); color: var(--paper); padding: 6px 12px; margin-bottom: 22px;
+    }
+    .hero h1 { font-family: var(--display); font-weight: 700; font-size: clamp(52px, 8vw, 96px); line-height: 0.95; margin: 0 0 14px; letter-spacing: -0.02em; }
+    .hero h1 .glass { color: var(--accent-text); }
+    .hero .sub { font-family: var(--display); font-style: italic; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; margin: 0 0 22px; }
+    .hero .lead { font-size: 20px; max-width: 560px; margin: 0 0 28px; color: var(--ink-soft); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { border: 2px solid var(--ink); padding: 7px 14px; font-weight: 700; font-size: 15px; background: var(--card); }
+    .tag:nth-child(1) { background: var(--glass); color: #fff; }
+    .tag:nth-child(2) { background: var(--silver); color: #1b1716; }
+
+    /* Карта из игры */
+    .deal { background: var(--card); border: var(--line); box-shadow: 10px 10px 0 var(--ink); padding: 22px; }
+    .deal-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; }
+    .deal-head b { font-family: var(--display); font-size: 18px; }
+    .deal-head span { font-size: 14px; color: var(--ink-soft); }
+    .gauges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+    .gauges span { border: 2px solid var(--ink); padding: 6px 2px; text-align: center; font-size: 13px; font-weight: 700; background: var(--paper); overflow-wrap: anywhere; }
+    @media (max-width: 420px) { .gauges { grid-template-columns: repeat(2, 1fr); } }
+    .card-face {
+      background: #f4ead6; color: #2a1f17; border: 2px solid #8a6a43; outline: 1px solid #8a6a43; outline-offset: -8px;
+      padding: 22px; font-family: var(--display); font-size: 18px; line-height: 1.45;
+    }
+    .card-face .who { display: block; font-family: var(--body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a43; margin-bottom: 8px; }
+    .card-face p { margin: 0; }
+    .choices { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 14px; }
+    .choices span { border: 2px solid var(--ink); padding: 7px 12px; font-weight: 700; font-size: 15px; background: var(--paper); box-shadow: 3px 3px 0 var(--ink); }
+    .deal-note { margin: 16px 0 0; padding-top: 12px; border-top: 2px dashed var(--ink); font-size: 15px; color: var(--ink-soft); }
+
+    /* Полоса шкал */
+    .band { border-block: var(--line); background: var(--ink); color: var(--paper); }
+    .band .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 26px; padding: 14px 0; font-family: var(--display); font-style: italic; font-size: 20px; }
+    .band span:nth-child(odd) { color: var(--band-accent); }
+
+    /* Разделы */
+    section.block { padding: 88px 0; }
+    .block-head { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: end; margin-bottom: 40px; }
+    .block-num { font-family: var(--display); font-weight: 700; font-size: 92px; line-height: 0.8; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+    .block-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.04; margin: 0; }
+    .block-head p { grid-column: 1 / -1; margin: 6px 0 0; max-width: 660px; color: var(--ink-soft); font-size: 20px; }
+    @media (max-width: 600px) { .block-num { font-size: 60px; } section.block { padding: 64px 0; } }
+    .tinted { background: var(--paper-2); border-block: var(--line); }
+
+    .story { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: start; }
+    @media (max-width: 900px) { .story { grid-template-columns: 1fr; } }
+    .prose p { margin: 0 0 16px; font-size: 19px; }
+    .panel { background: var(--card); border: var(--line); box-shadow: var(--shadow); padding: 24px; }
+    .panel h3 { font-family: var(--display); font-size: 24px; margin: 0 0 10px; }
+    .panel ul { margin: 0; padding-left: 22px; }
+    .panel li { margin: 8px 0; }
+    .acts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    @media (max-width: 800px) { .acts { grid-template-columns: 1fr; } }
+    .act { border: var(--line); background: var(--card); padding: 20px; box-shadow: var(--shadow-small); }
+    .act b { font-family: var(--display); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-text); }
+    .act h3 { font-family: var(--display); font-size: 24px; margin: 4px 0 8px; }
+    .act p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+
+    .counters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 700px) { .counters { grid-template-columns: repeat(2, 1fr); } }
+    .counter { border: var(--line); background: var(--card); padding: 18px; box-shadow: var(--shadow-small); }
+    .counter strong { display: block; font-family: var(--display); font-weight: 700; font-size: 48px; line-height: 1; }
+    .counter span { font-weight: 600; color: var(--ink-soft); }
+    .inside { margin: 40px 0 0; padding-left: 22px; columns: 2; column-gap: 40px; }
+    @media (max-width: 700px) { .inside { columns: 1; } }
+    .inside li { margin: 0 0 10px; break-inside: avoid; }
+    .note { margin: 24px 0 0; font-size: 16px; color: var(--ink-soft); max-width: 760px; }
+
+    /* Знаки */
+    .signs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 26px; }
+    @media (max-width: 860px) { .signs { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .signs { grid-template-columns: 1fr; } }
+    .sign { display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: center; }
+    .diamond { width: 76px; height: 76px; margin: 10px; transform: rotate(45deg); border: 5px solid var(--glass); background: #fff; display: grid; place-items: center; }
+    .diamond svg { transform: rotate(-45deg); width: 40px; height: 40px; }
+    .sign h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 0 0 4px; }
+    .sign p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+    .more { margin: 40px 0 0; font-weight: 600; }
+
+    /* Поддержка — печать */
+    .seal-label { border: var(--line); background: var(--glass); color: #fff; box-shadow: 12px 12px 0 var(--ink); display: grid; grid-template-columns: 1.2fr 0.8fr; }
+    @media (max-width: 760px) { .seal-label { grid-template-columns: 1fr; } }
+    .seal-label > div { padding: 34px; }
+    @media (max-width: 420px) { .seal-label > div { padding: 24px; } }
+    .seal-label > div + div { border-left: var(--line); background: var(--card); color: var(--ink); }
+    @media (max-width: 760px) { .seal-label > div + div { border-left: 0; border-top: var(--line); } }
+    .seal-label h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4vw, 46px); line-height: 1.02; margin: 0 0 14px; }
+    .seal-label p { margin: 0; font-size: 18px; }
+    .seal-label dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 16px; }
+    .seal-label dt { font-weight: 800; }
+    .seal-label dd { margin: 0; overflow-wrap: anywhere; }
+    .seal-label dd a { font-weight: 700; }
+    .mail-button {
+      display: inline-block; margin-top: 22px; padding: 12px 20px; border: 3px solid #1b1716;
+      background: #1b1716; color: #fff; font-weight: 800; text-decoration: none; box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .mail-button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.35); }
+    .faq { margin-top: 56px; display: grid; gap: 12px; max-width: 860px; }
+    .faq h3 { font-family: var(--display); font-size: 28px; margin: 0 0 6px; }
+    .faq details { border: 2px solid var(--ink); background: var(--card); padding: 0 18px; }
+    .faq summary { cursor: pointer; font-weight: 700; padding: 14px 0; }
+    .faq details[open] summary { border-bottom: 2px dashed var(--ink); margin-bottom: 12px; }
+    .faq details p { margin: 0 0 14px; }
+
+    /* Подвал */
+    .bottom { border-top: var(--line); padding: 30px 0 44px; font-size: 15px; }
+    .bottom .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 30px; align-items: center; }
+    .bottom nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    .bottom b { font-family: var(--display); }
+
+    /* Текстовые страницы */
+    .page { padding: 56px 0 96px; }
+    .sheet { max-width: 820px; margin: 0 auto; background: var(--card); border: var(--line); box-shadow: 10px 10px 0 var(--ink); padding: clamp(22px, 5vw, 56px); }
+    .sheet + .sheet { margin-top: 56px; }
+    .sheet .lang-kicker { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 8px; }
+    .sheet h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 0 0 10px; }
+    .sheet .date { display: inline-block; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 700; padding: 4px 10px; margin-bottom: 30px; }
+    .sheet h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 36px 0 10px; }
+    .sheet h2::before { content: "§ "; color: var(--accent-text); }
+    .sheet ul { padding-left: 22px; }
+    .sheet li { margin: 6px 0; }
+    .sheet .short { border: 2px solid var(--ink); background: var(--silver); color: #1b1716; padding: 16px 20px; font-weight: 600; }
+    .sheet a[href^="mailto:"], .sheet code { overflow-wrap: anywhere; }
+    .sheet code { font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="SprinGo — на главную">
+        <span class="logo-cell" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 32c-5-7-9-11-14-11a11 11 0 0 0 0 22c5 0 9-4 14-11s9-11 14-11a11 11 0 0 1 0 22c-5 0-9-4-14-11z" fill="none" stroke="#e9ebee" stroke-width="5"/></svg></span>
+        <span class="logo-name">SprinGo</span>
+      </a>
+      <nav class="lang" aria-label="Язык / Language">
+        <a href="#ru" hreflang="ru" lang="ru">Русский</a>
+        <a href="#en" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== РУССКИЙ ===================== -->
+    <div id="ru" lang="ru">
+      <section class="hero">
+        <div class="wrap">
+          <div>
+            <span class="kicker">Интерактивные истории · iPhone</span>
+            <h1>SprinGo<span class="glass">.</span></h1>
+            <p class="sub">Пепел и стекло: правь свайпами</p>
+            <p class="lead">Сборник интерактивных историй, где каждый выбор — свайп карты. Первая история — «Пепел и стекло»: безродный счетовод становится регентом при девятилетней королеве, бежит от убийц сквозь стеклянную стену и оказывается в нашем веке.</p>
+            <div class="tags">
+              <span class="tag">Бесплатно</span>
+              <span class="tag">Без рекламы и покупок</span>
+              <span class="tag">Без регистрации</span>
+              <span class="tag">Русский и English</span>
+            </div>
+          </div>
+
+          <div class="deal" role="img" aria-label="Пример карты из игры: Ото Саллис предлагает заём, варианты ответа — отказаться или взять двадцать тысяч">
+            <div class="deal-head"><b>Акт I · Ардал</b><span>карта из игры</span></div>
+            <div class="gauges" aria-hidden="true"><span>Казна</span><span>Армия</span><span>Народ</span><span>Знать</span></div>
+            <div class="card-face">
+              <span class="who">Ото Саллис</span>
+              <p>Ото Саллис кладёт на стол долговую книгу покойного короля. «Сорок тысяч марок. Я не тороплю. А войску платить нечем. Могу дать ещё двадцать под пошлины с соли.»</p>
+            </div>
+            <div class="choices" aria-hidden="true"><span>← Отказаться</span><span>Взять двадцать тысяч →</span></div>
+            <p class="deal-note">Это ключевой указ: после свайпа его скрепляют Печатью регента — Face ID или удержанием пальца.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="band" aria-hidden="true">
+        <div class="wrap"><span>Казна</span><span>Армия</span><span>Народ</span><span>Знать</span><span>Деньги</span><span>Рассудок</span><span>Внимание полиции</span><span>Доверие ИИ</span></div>
+      </div>
+
+      <section class="block" id="story">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">I</span>
+            <h2>Пепел и стекло</h2>
+            <p>Первая история сборника. Забег занимает около десяти минут, и каждый идёт по-другому.</p>
+          </div>
+          <div class="story">
+            <div class="prose">
+              <p>Ты — безродный счетовод, которого умирающий король сделал регентом. Королеве Илзе девять лет. Казна в долгах, три великих дома делят корону, кланы ждут за перевалами.</p>
+              <p>В ночь, когда умирает последняя старая драконица, за тобой приходят убийцы, и ты бежишь сквозь стеклянную стену. Выходишь на заброшенном заводе в нашем веке. Документов нет, здешних букв ты не читаешь, а помочь может только голос из старого телефона.</p>
+              <p>Через четыре месяца затмение. Если успеешь, вернёшься. Но вернёшься не с пустыми руками.</p>
+            </div>
+            <div class="panel">
+              <h3>Как играть</h3>
+              <ul>
+                <li>Карта — просьба, угроза или совет. Свайп влево или вправо — твой ответ.</li>
+                <li>Четыре шкалы показывают, на чём держится власть. Куда приведёт выбор, не видно — видно только, что он что-то сдвинет.</li>
+                <li>Опасно и пусто, и слишком много: если шкала дошла до нуля или до ста, правлению конец.</li>
+                <li>Ключевые указы скрепляются Печатью регента: Face ID или удержание пальца.</li>
+                <li>Ответить можно и вслух — кнопкой «Ответить вслух» под картой. Свайп работает всегда.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acts">
+            <div class="act"><b>Акт I</b><h3>Ардал</h3><p>Королевство: казна, армия, народ и знать.</p></div>
+            <div class="act"><b>Акт II</b><h3>Наш век</h3><p>Деньги, рассудок, внимание полиции и доверие к голосу в телефоне.</p></div>
+            <div class="act"><b>Акт III</b><h3>Возвращение</h3><p>Обратная дорога и решающий выбор.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block tinted">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">II</span>
+            <h2>Что внутри</h2>
+            <p>Одна история, много дорог. Ни одна концовка не бывает совсем счастливой.</p>
+          </div>
+          <div class="counters">
+            <div class="counter"><strong>94</strong><span>карты</span></div>
+            <div class="counter"><strong>18</strong><span>сцен с диалогами</span></div>
+            <div class="counter"><strong>9</strong><span>концовок</span></div>
+            <div class="counter"><strong>~10</strong><span>минут на забег</span></div>
+          </div>
+          <ul class="inside">
+            <li>Летопись правления: итог забега можно сохранить картинкой или показать другу.</li>
+            <li>Забег сохраняется: «Продолжить» на титуле вернёт к последней карте.</li>
+            <li>По желанию: Шов можно открыть в своей комнате через камеру, а во втором акте игра назовёт ваш город и время заката.</li>
+            <li>Две романтические линии, драконы, долговые векселя и порох.</li>
+            <li>Оформление в духе старой рукописи, свои музыка и звуки.</li>
+            <li>Русский и английский язык.</li>
+          </ul>
+          <p class="note">В тексте историй есть смерть и насилие, упоминаются вино и сигареты, есть поцелуй и свадьба. Картинок жестокости нет.</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">III</span>
+            <h2>Без лишнего</h2>
+            <p>Игра ничего не собирает. Всё, что она помнит, хранится на вашем телефоне.</p>
+          </div>
+          <div class="signs">
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 16 L34 16 L25 22 L28 33 L20 26 L12 33 L15 22 L6 16 L17 16 Z" fill="none" stroke="#1b1716" stroke-width="3.5" stroke-linejoin="round"/></svg></div><div><h3>Бесплатно</h3><p>Полностью. Без встроенных покупок и подписок.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M10 30 L30 10" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>Без рекламы</h3><p>Ни баннеров, ни роликов.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M7 35 C9 25 31 25 33 35" fill="none" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>Без регистрации</h3><p>Открыл — и играешь. Никаких аккаунтов и паролей.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="17" width="22" height="17" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M14 17 V12 a6 6 0 0 1 12 0 V17" fill="none" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>Данные — на телефоне</h3><p>Прогресс хранится на устройстве. Разработчик ничего не получает.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 21 L16 29 L33 11" fill="none" stroke="#1b1716" stroke-width="5"/></svg></div><div><h3>Разрешения — по желанию</h3><p>Камера, микрофон, место и уведомления — только по нажатию на кнопку функции. Без них игра проходится полностью.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 16 Q20 4 34 16" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M12 22 Q20 15 28 22" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M8 34 L32 6" stroke="#b0222e" stroke-width="4"/></svg></div><div><h3>Почти без интернета</h3><p>Сеть нужна, только чтобы назвать город и, на части телефонов, распознать речь. Это делает Apple.</p></div></div>
+          </div>
+          <p class="more">Подробно — в <a href="privacy.html#ru">Политике конфиденциальности</a>.</p>
+        </div>
+      </section>
+
+      <section class="block tinted" id="support">
+        <div class="wrap">
+          <div class="seal-label">
+            <div>
+              <h2>Есть вопрос или нашли ошибку?</h2>
+              <p>Напишите нам. Опишите, что случилось и как это повторить, и укажите модель iPhone, версию iOS и версию игры — она видна на экране «Об игре» (кнопка ⓘ в сборнике).</p>
+              <a class="mail-button" href="mailto:springo.stories@gmail.com?subject=SprinGo">Написать письмо →</a>
+            </div>
+            <div>
+              <dl>
+                <dt>Приложение</dt><dd>SprinGo: Интерактивные истории</dd>
+                <dt>Разработчик</dt><dd>Yahor Zhelabanau</dd>
+                <dt>E-mail</dt><dd><a href="mailto:springo.stories@gmail.com">springo.stories@gmail.com</a></dd>
+                <dt>Нужен</dt><dd>iPhone с iOS 15 или новее</dd>
+                <dt>Языки</dt><dd>русский, английский</dd>
+                <dt>App Store</dt><dd>Беларусь, Россия</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="faq">
+            <h3>Частые вопросы</h3>
+            <details>
+              <summary>Как продолжить забег?</summary>
+              <p>Забег сохраняется каждый раз, когда карта ложится на стол. На титуле «Пепла и стекла» нажмите «Продолжить» — игра вернёт к последней карте. «Начать» запускает новый забег; если есть сохранённый, игра сначала спросит.</p>
+            </details>
+            <details>
+              <summary>Не работает «Ответить вслух»</summary>
+              <p>Нужны два разрешения: на распознавание речи и на микрофон. Проверьте их в «Настройки» → «SprinGo». На части телефонов речь распознаётся через интернет. Если кнопки под картой нет, значит, разрешение выключено или распознавание сейчас недоступно. Свайп работает всегда.</p>
+            </details>
+            <details>
+              <summary>Плашка «Где я?» не показывает город</summary>
+              <p>Нужны доступ к геопозиции и интернет: без сети игра покажет только время заката. Если вы отказали в доступе, плашка пропадает до конца забега. Включите доступ в «Настройки» → «SprinGo», и в следующем забеге игра определит город сама.</p>
+            </details>
+            <details>
+              <summary>Где мои летописи?</summary>
+              <p>Сохранённые летописи лежат в приложении «Фото». В игре их собирает раздел «Летописи» на титуле истории — для этого нужен доступ к галерее. Без доступа летописи никуда не пропадают и остаются в «Фото».</p>
+            </details>
+            <details>
+              <summary>Как отключить напоминание?</summary>
+              <p>Игра присылает не больше одного напоминания — через сутки после того, как вы из неё вышли. Отключить его можно в «Настройки» → «SprinGo» → «Уведомления».</p>
+            </details>
+            <details>
+              <summary>Как удалить мои данные?</summary>
+              <p>Все данные игры хранятся на телефоне и удаляются вместе с приложением. Летописи, сохранённые в «Фото», удаляются в «Фото». Подробнее — в <a href="privacy.html#ru">Политике конфиденциальности</a>. Условия использования — на <a href="terms.html#ru">отдельной странице</a>.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===================== ENGLISH ===================== -->
+    <div id="en" lang="en">
+      <section class="hero">
+        <div class="wrap">
+          <div>
+            <span class="kicker">Interactive stories · iPhone</span>
+            <h1>SprinGo<span class="glass">.</span></h1>
+            <p class="sub">Ash and Glass: rule by swipes</p>
+            <p class="lead">A collection of interactive stories where every choice is a swipe of a card. The first story is Ash and Glass: a commoner bookkeeper becomes regent for a nine-year-old queen, runs from assassins through a wall of glass and steps out in our own century.</p>
+            <div class="tags">
+              <span class="tag">Free</span>
+              <span class="tag">No ads, no purchases</span>
+              <span class="tag">No account</span>
+              <span class="tag">English and Russian</span>
+            </div>
+          </div>
+
+          <div class="deal" role="img" aria-label="A sample card from the game: Otto Sallis offers a loan; the answers are Refuse or Take twenty thousand">
+            <div class="deal-head"><b>Act I · Ardal</b><span>a card from the game</span></div>
+            <div class="gauges" aria-hidden="true"><span>Treasury</span><span>Army</span><span>People</span><span>Nobility</span></div>
+            <div class="card-face">
+              <span class="who">Otto Sallis</span>
+              <p>Otto Sallis lays down the late king’s debt ledger. “Forty thousand marks. I am in no hurry. But the army wants its pay. I can lend twenty more, on the salt duties.”</p>
+            </div>
+            <div class="choices" aria-hidden="true"><span>← Refuse</span><span>Take twenty thousand →</span></div>
+            <p class="deal-note">This is a key decree: after the swipe it is sealed with the Regent’s Seal, by Face ID or a press-and-hold.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="band" aria-hidden="true">
+        <div class="wrap"><span>Treasury</span><span>Army</span><span>People</span><span>Nobility</span><span>Money</span><span>Sanity</span><span>Police</span><span>Trust</span></div>
+      </div>
+
+      <section class="block" id="story-en">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">I</span>
+            <h2>Ash and Glass</h2>
+            <p>The first story in the collection. A run takes about ten minutes, and every run goes differently.</p>
+          </div>
+          <div class="story">
+            <div class="prose">
+              <p>You are a commoner and a bookkeeper, and a dying king has made you regent. Queen Ilze is nine. The treasury is in debt, three great houses fight over the crown, and the clans wait beyond the mountain passes.</p>
+              <p>The night the last old dragon dies, assassins come for you and you run through a wall of glass. You step out in an abandoned glassworks in our own century. You have no papers, you can’t read the signs, and the only help you have is a voice in an old phone.</p>
+              <p>In four months there will be an eclipse. If you make it, you can go home. But you won’t go home empty-handed.</p>
+            </div>
+            <div class="panel">
+              <h3>How it plays</h3>
+              <ul>
+                <li>Each card is a request, a threat or a piece of advice. Swipe left or right to answer.</li>
+                <li>Four gauges show what your power rests on. You can’t see where a choice leads, only that it will move something.</li>
+                <li>Too little is dangerous, and so is too much. If any gauge hits zero or one hundred, your rule is over.</li>
+                <li>Key decrees are sealed with the Regent’s Seal: Face ID or a press-and-hold.</li>
+                <li>You can also answer out loud with the “Answer out loud” button under a card. Swiping always works.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acts">
+            <div class="act"><b>Act I</b><h3>Ardal</h3><p>The kingdom: treasury, army, people and nobility.</p></div>
+            <div class="act"><b>Act II</b><h3>Our century</h3><p>Money, sanity, police attention and trust in the voice in your phone.</p></div>
+            <div class="act"><b>Act III</b><h3>The return</h3><p>The way back and the choice that settles it.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block tinted">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">II</span>
+            <h2>What’s inside</h2>
+            <p>One story, many roads. None of the endings is purely happy.</p>
+          </div>
+          <div class="counters">
+            <div class="counter"><strong>94</strong><span>cards</span></div>
+            <div class="counter"><strong>18</strong><span>scenes with dialogue</span></div>
+            <div class="counter"><strong>9</strong><span>endings</span></div>
+            <div class="counter"><strong>~10</strong><span>minutes a run</span></div>
+          </div>
+          <ul class="inside">
+            <li>A chronicle of your reign: save the result of a run as a picture or show it to a friend.</li>
+            <li>Your run is saved: “Continue” on the title screen takes you back to your last card.</li>
+            <li>Optional: open the Seam in your own room with the camera, and in Act II the game names your city and your local sunset time.</li>
+            <li>Two love stories, dragons, promissory notes and gunpowder.</li>
+            <li>An old-manuscript look, with original music and sound.</li>
+            <li>English and Russian.</li>
+          </ul>
+          <p class="note">The stories contain text descriptions of death and violence, mentions of wine and cigarettes, a kiss and a wedding. No graphic imagery.</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="block-head">
+            <span class="block-num" aria-hidden="true">III</span>
+            <h2>No fuss</h2>
+            <p>The game collects nothing. Everything it remembers stays on your phone.</p>
+          </div>
+          <div class="signs">
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L23 16 L34 16 L25 22 L28 33 L20 26 L12 33 L15 22 L6 16 L17 16 Z" fill="none" stroke="#1b1716" stroke-width="3.5" stroke-linejoin="round"/></svg></div><div><h3>Free</h3><p>Completely. No in-app purchases, no subscriptions.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M10 30 L30 10" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>No ads</h3><p>No banners, no videos.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M7 35 C9 25 31 25 33 35" fill="none" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>No account</h3><p>Open it and play. No sign-up, no passwords.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="17" width="22" height="17" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M14 17 V12 a6 6 0 0 1 12 0 V17" fill="none" stroke="#1b1716" stroke-width="4"/></svg></div><div><h3>Data stays on your phone</h3><p>Progress is stored on the device. The developer receives nothing.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 21 L16 29 L33 11" fill="none" stroke="#1b1716" stroke-width="5"/></svg></div><div><h3>Permissions are optional</h3><p>Camera, microphone, location and notifications are requested only when you tap the feature’s button. The game plays fully without them.</p></div></div>
+            <div class="sign"><div class="diamond"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 16 Q20 4 34 16" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M12 22 Q20 15 28 22" fill="none" stroke="#1b1716" stroke-width="4"/><path d="M8 34 L32 6" stroke="#b0222e" stroke-width="4"/></svg></div><div><h3>Almost offline</h3><p>The internet is needed only to name your city and, on some phones, to recognize speech. Apple handles both.</p></div></div>
+          </div>
+          <p class="more">Details are in the <a href="privacy.html#en">Privacy Policy</a>.</p>
+        </div>
+      </section>
+
+      <section class="block tinted" id="support-en">
+        <div class="wrap">
+          <div class="seal-label">
+            <div>
+              <h2>A question or a bug?</h2>
+              <p>Write to us. Describe what happened and how to repeat it, and include your iPhone model, iOS version and the game version, which is shown on the About screen (the ⓘ button in the collection).</p>
+              <a class="mail-button" href="mailto:springo.stories@gmail.com?subject=SprinGo">Send an email →</a>
+            </div>
+            <div>
+              <dl>
+                <dt>App</dt><dd>SprinGo: Interactive Stories</dd>
+                <dt>Developer</dt><dd>Yahor Zhelabanau</dd>
+                <dt>Email</dt><dd><a href="mailto:springo.stories@gmail.com">springo.stories@gmail.com</a></dd>
+                <dt>Requires</dt><dd>iPhone with iOS 15 or later</dd>
+                <dt>Languages</dt><dd>English, Russian</dd>
+                <dt>App Store</dt><dd>Belarus, Russia</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="faq">
+            <h3>Frequently asked questions</h3>
+            <details>
+              <summary>How do I continue a run?</summary>
+              <p>The run is saved every time a card lands on the table. On the Ash and Glass title screen, tap “Continue” to return to your last card. “Start” begins a new run; if a saved run exists, the game asks first.</p>
+            </details>
+            <details>
+              <summary>“Answer out loud” doesn’t work</summary>
+              <p>It needs two permissions: Speech Recognition and Microphone. Check them in Settings → SprinGo. On some phones speech is recognized over the internet. If there is no button under the card, a permission is off or recognition is unavailable right now. Swiping always works.</p>
+            </details>
+            <details>
+              <summary>The “Where am I?” chip doesn’t show my city</summary>
+              <p>It needs location access and the internet: with no network, the game shows only the sunset time. If you denied access, the chip disappears for the rest of the run. Turn access on in Settings → SprinGo, and in the next run the game finds your city by itself.</p>
+            </details>
+            <details>
+              <summary>Where are my chronicles?</summary>
+              <p>Saved chronicles are in the Photos app. In the game, the “Chronicles” section on the story’s title screen collects them; this needs access to your photo library. Without access the chronicles stay in Photos.</p>
+            </details>
+            <details>
+              <summary>How do I turn off the reminder?</summary>
+              <p>The game sends at most one reminder, a day after you leave it. You can turn it off in Settings → SprinGo → Notifications.</p>
+            </details>
+            <details>
+              <summary>How do I delete my data?</summary>
+              <p>All game data is stored on your phone and is deleted together with the app. Chronicles saved to Photos are deleted in Photos. More in the <a href="privacy.html#en">Privacy Policy</a>. The Terms of Use are on a <a href="terms.html#en">separate page</a>.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <span>© 2026 <b>Yahor Zhelabanau</b></span>
+      <nav aria-label="Документы / Documents">
+        <a href="index.html#support">Поддержка · Support</a>
+        <a href="terms.html">Условия использования · Terms of Use</a>
+        <a href="privacy.html">Конфиденциальность · Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
