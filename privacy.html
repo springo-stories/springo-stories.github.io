@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Политика конфиденциальности · Privacy Policy — SprinGo</title>
+  <meta name="description" content="Какие данные обрабатывает приложение SprinGo: Интерактивные истории и как. What data SprinGo: Interactive Stories processes and how.">
+  <meta name="theme-color" content="#b0222e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23b0222e'/%3E%3Cpath d='M32 32c-5-7-9-11-14-11a11 11 0 0 0 0 22c5 0 9-4 14-11s9-11 14-11a11 11 0 0 1 0 22c-5 0-9-4-14-11z' fill='none' stroke='%23e9ebee' stroke-width='5'/%3E%3C/svg%3E">
+  <style>
+    /* SprinGo — сайт в духе счётной книги регента: бумага, тушь, серебро и красное стекло. */
+    :root {
+      --paper: #efe9dd;
+      --paper-2: #e5ddcc;
+      --card: #fbf8f1;
+      --ink: #1b1716;
+      --ink-soft: #50463f;
+      --rule: rgba(27, 23, 22, 0.06);
+      --glass: #b0222e;
+      --accent-text: #b0222e;
+      --silver: #c7cbd1;
+      --band-accent: #ff7a83;
+      --line: 3px solid var(--ink);
+      --shadow: 6px 6px 0 var(--ink);
+      --shadow-small: 4px 4px 0 var(--ink);
+      --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #131015;
+        --paper-2: #1c181f;
+        --card: #1b171d;
+        --ink: #ede6da;
+        --ink-soft: #b8afa3;
+        --rule: rgba(237, 230, 218, 0.04);
+        --glass: #d23a46;
+        --accent-text: #ef6f79;
+        --band-accent: #a01d29;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background-color: var(--paper);
+      background-image: linear-gradient(var(--rule) 1px, transparent 1px);
+      background-size: 100% 32px;
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--glass); outline-offset: 3px; }
+    .wrap { width: min(1180px, 100% - 32px); margin: 0 auto; }
+    [id] { scroll-margin-top: 96px; }
+
+    /* Шапка */
+    .top { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 70px; padding: 10px 0; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-cell { width: 46px; height: 46px; flex: none; border: var(--line); background: var(--glass); display: grid; place-items: center; }
+    .logo-cell svg { width: 30px; height: 30px; }
+    .logo-name { font-family: var(--display); font-weight: 700; font-size: 22px; }
+    .lang { display: flex; gap: 6px; }
+    .lang a { text-decoration: none; font-weight: 600; font-size: 15px; padding: 8px 12px; border: 2px solid var(--ink); background: var(--card); }
+    .lang a:hover { background: var(--silver); color: #1b1716; }
+    @media (max-width: 420px) {
+      .logo-name { font-size: 19px; }
+      .lang a { padding: 7px 9px; font-size: 14px; }
+    }
+
+    /* Первый экран */
+    .hero { padding: 64px 0 56px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+    @media (max-width: 960px) { .hero .wrap { grid-template-columns: 1fr; } }
+    .kicker {
+      display: inline-block; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--ink); color: var(--paper); padding: 6px 12px; margin-bottom: 22px;
+    }
+    .hero h1 { font-family: var(--display); font-weight: 700; font-size: clamp(52px, 8vw, 96px); line-height: 0.95; margin: 0 0 14px; letter-spacing: -0.02em; }
+    .hero h1 .glass { color: var(--accent-text); }
+    .hero .sub { font-family: var(--display); font-style: italic; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; margin: 0 0 22px; }
+    .hero .lead { font-size: 20px; max-width: 560px; margin: 0 0 28px; color: var(--ink-soft); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { border: 2px solid var(--ink); padding: 7px 14px; font-weight: 700; font-size: 15px; background: var(--card); }
+    .tag:nth-child(1) { background: var(--glass); color: #fff; }
+    .tag:nth-child(2) { background: var(--silver); color: #1b1716; }
+
+    /* Карта из игры */
+    .deal { background: var(--card); border: var(--line); box-shadow: 10px 10px 0 var(--ink); padding: 22px; }
+    .deal-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin-bottom: 14px; }
+    .deal-head b { font-family: var(--display); font-size: 18px; }
+    .deal-head span { font-size: 14px; color: var(--ink-soft); }
+    .gauges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+    .gauges span { border: 2px solid var(--ink); padding: 6px 2px; text-align: center; font-size: 13px; font-weight: 700; background: var(--paper); overflow-wrap: anywhere; }
+    @media (max-width: 420px) { .gauges { grid-template-columns: repeat(2, 1fr); } }
+    .card-face {
+      background: #f4ead6; color: #2a1f17; border: 2px solid #8a6a43; outline: 1px solid #8a6a43; outline-offset: -8px;
+      padding: 22px; font-family: var(--display); font-size: 18px; line-height: 1.45;
+    }
+    .card-face .who { display: block; font-family: var(--body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6a43; margin-bottom: 8px; }
+    .card-face p { margin: 0; }
+    .choices { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 14px; }
+    .choices span { border: 2px solid var(--ink); padding: 7px 12px; font-weight: 700; font-size: 15px; background: var(--paper); box-shadow: 3px 3px 0 var(--ink); }
+    .deal-note { margin: 16px 0 0; padding-top: 12px; border-top: 2px dashed var(--ink); font-size: 15px; color: var(--ink-soft); }
+
+    /* Полоса шкал */
+    .band { border-block: var(--line); background: var(--ink); color: var(--paper); }
+    .band .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 26px; padding: 14px 0; font-family: var(--display); font-style: italic; font-size: 20px; }
+    .band span:nth-child(odd) { color: var(--band-accent); }
+
+    /* Разделы */
+    section.block { padding: 88px 0; }
+    .block-head { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: end; margin-bottom: 40px; }
+    .block-num { font-family: var(--display); font-weight: 700; font-size: 92px; line-height: 0.8; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+    .block-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.04; margin: 0; }
+    .block-head p { grid-column: 1 / -1; margin: 6px 0 0; max-width: 660px; color: var(--ink-soft); font-size: 20px; }
+    @media (max-width: 600px) { .block-num { font-size: 60px; } section.block { padding: 64px 0; } }
+    .tinted { background: var(--paper-2); border-block: var(--line); }
+
+    .story { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: start; }
+    @media (max-width: 900px) { .story { grid-template-columns: 1fr; } }
+    .prose p { margin: 0 0 16px; font-size: 19px; }
+    .panel { background: var(--card); border: var(--line); box-shadow: var(--shadow); padding: 24px; }
+    .panel h3 { font-family: var(--display); font-size: 24px; margin: 0 0 10px; }
+    .panel ul { margin: 0; padding-left: 22px; }
+    .panel li { margin: 8px 0; }
+    .acts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    @media (max-width: 800px) { .acts { grid-template-columns: 1fr; } }
+    .act { border: var(--line); background: var(--card); padding: 20px; box-shadow: var(--shadow-small); }
+    .act b { font-family: var(--display); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-text); }
+    .act h3 { font-family: var(--display); font-size: 24px; margin: 4px 0 8px; }
+    .act p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+
+    .counters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 700px) { .counters { grid-template-columns: repeat(2, 1fr); } }
+    .counter { border: var(--line); background: var(--card); padding: 18px; box-shadow: var(--shadow-small); }
+    .counter strong { display: block; font-family: var(--display); font-weight: 700; font-size: 48px; line-height: 1; }
+    .counter span { font-weight: 600; color: var(--ink-soft); }
+    .inside { margin: 40px 0 0; padding-left: 22px; columns: 2; column-gap: 40px; }
+    @media (max-width: 700px) { .inside { columns: 1; } }
+    .inside li { margin: 0 0 10px; break-inside: avoid; }
+    .note { margin: 24px 0 0; font-size: 16px; color: var(--ink-soft); max-width: 760px; }
+
+    /* Знаки */
+    .signs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 26px; }
+    @media (max-width: 860px) { .signs { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .signs { grid-template-columns: 1fr; } }
+    .sign { display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: center; }
+    .diamond { width: 76px; height: 76px; margin: 10px; transform: rotate(45deg); border: 5px solid var(--glass); background: #fff; display: grid; place-items: center; }
+    .diamond svg { transform: rotate(-45deg); width: 40px; height: 40px; }
+    .sign h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 0 0 4px; }
+    .sign p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+    .more { margin: 40px 0 0; font-weight: 600; }
+
+    /* Поддержка — печать */
+    .seal-label { border: var(--line); background: var(--glass); color: #fff; box-shadow: 12px 12px 0 var(--ink); display: grid; grid-template-columns: 1.2fr 0.8fr; }
+    @media (max-width: 760px) { .seal-label { grid-template-columns: 1fr; } }
+    .seal-label > div { padding: 34px; }
+    @media (max-width: 420px) { .seal-label > div { padding: 24px; } }
+    .seal-label > div + div { border-left: var(--line); background: var(--card); color: var(--ink); }
+    @media (max-width: 760px) { .seal-label > div + div { border-left: 0; border-top: var(--line); } }
+    .seal-label h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4vw, 46px); line-height: 1.02; margin: 0 0 14px; }
+    .seal-label p { margin: 0; font-size: 18px; }
+    .seal-label dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 16px; }
+    .seal-label dt { font-weight: 800; }
+    .seal-label dd { margin: 0; overflow-wrap: anywhere; }
+    .seal-label dd a { font-weight: 700; }
+    .mail-button {
+      display: inline-block; margin-top: 22px; padding: 12px 20px; border: 3px solid #1b1716;
+      background: #1b1716; color: #fff; font-weight: 800; text-decoration: none; box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .mail-button:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.35); }
+    .faq { margin-top: 56px; display: grid; gap: 12px; max-width: 860px; }
+    .faq h3 { font-family: var(--display); font-size: 28px; margin: 0 0 6px; }
+    .faq details { border: 2px solid var(--ink); background: var(--card); padding: 0 18px; }
+    .faq summary { cursor: pointer; font-weight: 700; padding: 14px 0; }
+    .faq details[open] summary { border-bottom: 2px dashed var(--ink); margin-bottom: 12px; }
+    .faq details p { margin: 0 0 14px; }
+
+    /* Подвал */
+    .bottom { border-top: var(--line); padding: 30px 0 44px; font-size: 15px; }
+    .bottom .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 30px; align-items: center; }
+    .bottom nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+    .bottom b { font-family: var(--display); }
+
+    /* Текстовые страницы */
+    .page { padding: 56px 0 96px; }
+    .sheet { max-width: 820px; margin: 0 auto; background: var(--card); border: var(--line); box-shadow: 10px 10px 0 var(--ink); padding: clamp(22px, 5vw, 56px); }
+    .sheet + .sheet { margin-top: 56px; }
+    .sheet .lang-kicker { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 8px; }
+    .sheet h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 5vw, 46px); line-height: 1.05; margin: 0 0 10px; }
+    .sheet .date { display: inline-block; background: var(--ink); color: var(--paper); font-size: 14px; font-weight: 700; padding: 4px 10px; margin-bottom: 30px; }
+    .sheet h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 36px 0 10px; }
+    .sheet h2::before { content: "§ "; color: var(--accent-text); }
+    .sheet ul { padding-left: 22px; }
+    .sheet li { margin: 6px 0; }
+    .sheet .short { border: 2px solid var(--ink); background: var(--silver); color: #1b1716; padding: 16px 20px; font-weight: 600; }
+    .sheet a[href^="mailto:"], .sheet code { overflow-wrap: anywhere; }
+    .sheet code { font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="index.html" aria-label="SprinGo — на главную">
+        <span class="logo-cell" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 32c-5-7-9-11-14-11a11 11 0 0 0 0 22c5 0 9-4 14-11s9-11 14-11a11 11 0 0 1 0 22c-5 0-9-4-14-11z" fill="none" stroke="#e9ebee" stroke-width="5"/></svg></span>
+        <span class="logo-name">SprinGo</span>
+      </a>
+      <nav class="lang" aria-label="Язык / Language">
+        <a href="#ru" hreflang="ru" lang="ru">Русский</a>
+        <a href="#en" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <!-- ===================== РУССКИЙ ===================== -->
+      <article class="sheet" id="ru" lang="ru">
+        <span class="lang-kicker">Русский</span>
+        <h1>Политика конфиденциальности</h1>
+        <p class="date">Действует с 12 ноября 2026 года</p>
+
+        <p class="short">Коротко: SprinGo не просит регистрироваться, не показывает рекламу, не собирает аналитику и не следит за вами. У приложения нет своего сервера, и разработчик не получает от него никаких данных. Прогресс хранится только на вашем телефоне. С телефона уходят лишь две вещи, обе — в Apple и только если вы сами включили функцию: координаты — чтобы узнать название вашего города, и на части телефонов звук ответа вслух — чтобы распознать речь.</p>
+
+        <h2>Кто мы</h2>
+        <p>Приложение «SprinGo: Интерактивные истории» (далее — приложение) — сборник интерактивных историй для iPhone; первая история в нём — «Пепел и стекло». Разработчик — физическое лицо Yahor Zhelabanau. Эта политика объясняет, какие данные обрабатывает приложение, зачем, где они хранятся и что из них попадает в Apple.</p>
+
+        <h2>Что мы не делаем</h2>
+        <ul>
+          <li>Не создаём учётных записей и не просим имя, адрес электронной почты, телефон или возраст.</li>
+          <li>Не используем рекламу, рекламные идентификаторы, сервисы аналитики и сторонние SDK.</li>
+          <li>Не отслеживаем вас в других приложениях и на сайтах.</li>
+          <li>Не продаём и не передаём ваши данные третьим лицам. Исключение — два сервиса Apple, описанные в разделах «Микрофон и распознавание речи» и «Геолокация»; они работают только по вашему действию.</li>
+          <li>У приложения нет собственного сервера: само оно ничего не отправляет в интернет.</li>
+        </ul>
+
+        <h2>Что хранится на вашем телефоне</h2>
+        <p>Чтобы игра помнила, где вы остановились, на устройстве сохраняются:</p>
+        <ul>
+          <li>текущий забег: код расклада и список сделанных выборов — по ним кнопка «Продолжить» возвращает к последней карте;</li>
+          <li>какие сцены вы уже видели — чтобы их можно было пропустить;</li>
+          <li>число завершённых забегов и отметка, когда снова можно предложить напоминание;</li>
+          <li>настройки звука («Музыка», «Звуки»);</li>
+          <li>системные идентификаторы летописей, которые вы сами сохранили в «Фото», — чтобы показать их в разделе «Летописи».</li>
+        </ul>
+        <p>Эти данные никуда не отправляются, и разработчик их не видит. Они удаляются вместе с приложением. Если на телефоне включено резервное копирование (iCloud или компьютер), iOS включает данные приложений в резервную копию; это делает система, у разработчика доступа к копиям нет.</p>
+
+        <h2>Камера</h2>
+        <p>Камера нужна для необязательной функции «Открыть Шов в комнате» на заставках между актами. Разрешение запрашивается, только когда вы нажимаете эту кнопку.</p>
+        <ul>
+          <li>Изображение с задней камеры только выводится на экран — под трещиной и названием акта, пока открыта заставка.</li>
+          <li>Приложение не делает фото, не записывает видео и не получает отдельные кадры: изображение нигде не сохраняется и никуда не отправляется.</li>
+          <li>Если отказать, заставка идёт как обычно, история не меняется.</li>
+        </ul>
+
+        <h2>Микрофон и распознавание речи</h2>
+        <p>Микрофон и распознавание речи нужны для необязательной кнопки «Ответить вслух» под картой: вместо свайпа можно произнести один из двух ответов. При первом нажатии iOS по очереди спрашивает два разрешения: на распознавание речи и на микрофон.</p>
+        <ul>
+          <li>Микрофон включается только после нажатия на кнопку и слушает не дольше 8 секунд.</li>
+          <li>Речь превращается в текст встроенной службой распознавания речи iOS на языке игры (русском или английском). Если телефон умеет распознавать этот язык сам, игра требует распознавания на устройстве, и звук не покидает телефон. Если не умеет, звук ответа передаётся на серверы Apple вместе с двумя вариантами ответа с карты (подсказка распознавателю) и обрабатывается по политике конфиденциальности Apple.</li>
+          <li>Приложение не записывает звук в файл и не хранит ни звук, ни распознанный текст: текст сразу сравнивается с вариантами на карте и отбрасывается. Разработчик не получает ни звука, ни текста.</li>
+          <li>Если отказать, кнопка пропадает, а свайпы работают как всегда.</li>
+        </ul>
+
+        <h2>Геолокация</h2>
+        <p>Во втором акте в шапке экрана появляется плашка «Где я?»: игра называет ваш город и время местного заката. Доступ запрашивается только «при использовании приложения» и только когда вы нажимаете на плашку.</p>
+        <ul>
+          <li>Игре достаточно точности около километра; по умолчанию iOS передаёт ей только примерное местоположение.</li>
+          <li>Место определяется один раз за забег. Если доступ уже дан, это происходит само в начале второго акта, без нажатия.</li>
+          <li>Чтобы узнать название города, координаты передаются в сервис геокодирования Apple. Время заката считается на телефоне. Без интернета игра покажет только время заката.</li>
+          <li>Координаты и название города не сохраняются, не попадают в летопись и разработчику не передаются. Город виден только на плашке.</li>
+          <li>Приложение не отслеживает местоположение в фоне и не хранит историю перемещений.</li>
+          <li>Если отказать, плашка пропадает до конца забега, остальное не меняется.</li>
+        </ul>
+
+        <h2>Face ID и Touch ID</h2>
+        <p>Ключевые указы в игре скрепляются «Печатью регента». Печать ставит Face ID (на телефонах с Touch ID — Touch ID). Системный запрос появляется на экране «Скрепить указ» после свайпа ключевой карты.</p>
+        <ul>
+          <li>Проверку проводит iOS. Приложение получает только ответ «получилось или нет»: ни изображения лица, ни отпечатка, ни других биометрических данных.</li>
+          <li>Если биометрия недоступна или вы отказались, печать ставится удержанием пальца в течение секунды.</li>
+          <li>Face ID нужен только для этой игровой механики и ничего не защищает.</li>
+        </ul>
+
+        <h2>Фотографии</h2>
+        <ul>
+          <li><b>Сохранение летописи.</b> Кнопка «Сохранить летопись» на экране итога забега добавляет в «Фото» одну картинку. Для этого iOS спрашивает доступ только на добавление снимков — с ним игра не видит вашу галерею. На картинке — итог забега, акт, значения шкал, число указов и печатей, код расклада и дата; сведений о вас на ней нет. Как и любой снимок, она попадёт в «Фото iCloud», если они у вас включены. Чтобы потом показать летопись, игра запоминает на телефоне её системный идентификатор.</li>
+          <li><b>Раздел «Летописи».</b> Чтобы показать сохранённые летописи, игре нужен доступ на чтение галереи. Его просят при открытии раздела и только если вы уже сохраняли летописи. В системном окне можно дать доступ ко всей галерее или только к выбранным снимкам. Игра открывает только картинки, которые сохранила сама, по их идентификаторам; другие снимки она не просматривает, не анализирует и никуда не отправляет.</li>
+        </ul>
+        <p>Если отказать, сохранённые летописи остаются в «Фото», просто не показываются в игре. Поделиться летописью можно и без доступа к галерее.</p>
+
+        <h2>Уведомления</h2>
+        <p>После первого завершённого забега игра предлагает одно напоминание: сначала объясняет, зачем оно, затем iOS спрашивает разрешение.</p>
+        <ul>
+          <li>Если вы разрешили, игра ставит на телефоне одно локальное напоминание «Королевство ждёт» — через сутки после того, как вы вышли из игры, — и снимает его, когда вы возвращаетесь.</li>
+          <li>Напоминания создаются на устройстве. Сервера рассылки нет, приложение не получает токен push-уведомлений. Других уведомлений нет.</li>
+          <li>Если предложение закрылось без ответа, игра повторит его не раньше чем через три завершённых забега. После отказа в системном окне больше не спрашивает.</li>
+        </ul>
+
+        <h2>Как вы делитесь результатами</h2>
+        <p>На экране итога есть кнопки «Поделиться летописью» и «Отправить расклад». Они открывают системное окно «Поделиться»: вы сами выбираете, кому и через какое приложение отправить. Приложение не знает, кто получатель. Ссылка расклада вида <code>ashglass://run?seed=…</code> содержит только код расклада (число): по нему у друга игра начнётся с той же случайностью.</p>
+
+        <h2>Сервисы Apple</h2>
+        <p>Распознавание речи и геокодирование — службы Apple, встроенные в iOS. Что Apple делает с полученными данными, описано в <a href="https://www.apple.com/legal/privacy/">политике конфиденциальности Apple</a>.</p>
+        <p>Как и для любого приложения, Apple может показывать разработчику обобщённую статистику App Store (например, число загрузок) и отчёты о сбоях от тех, кто в настройках конфиденциальности iPhone разрешил делиться аналитикой с разработчиками приложений. Эти данные собирает Apple, а не приложение, и по ним нельзя узнать, кто вы.</p>
+
+        <h2>Дети</h2>
+        <p>Приложение не предназначено для детей: в тексте историй есть смерть, насилие, упоминания алкоголя и табака. Мы ни у кого не собираем персональные данные — ни у детей, ни у взрослых.</p>
+
+        <h2>Как отозвать разрешения</h2>
+        <p>Все разрешения необязательны: у каждой функции есть замена, и игру можно пройти без них. Камеру, микрофон, распознавание речи, геолокацию, Face ID, доступ к «Фото» и уведомления можно в любой момент отключить: «Настройки» → «SprinGo».</p>
+
+        <h2>Как удалить данные</h2>
+        <p>Удалите приложение — вместе с ним удалятся сохранённый забег и все настройки. Летописи, которые вы сохранили в «Фото», остаются там; удалить их можно в приложении «Фото».</p>
+
+        <h2>Изменения политики</h2>
+        <p>Если приложение начнёт обрабатывать данные иначе, мы обновим эту страницу и дату вверху до выхода такой версии.</p>
+
+        <h2>Связь</h2>
+        <p>Вопросы о конфиденциальности присылайте на <a href="mailto:springo.stories@gmail.com">springo.stories@gmail.com</a>.</p>
+      </article>
+
+      <!-- ===================== ENGLISH ===================== -->
+      <article class="sheet" id="en" lang="en">
+        <span class="lang-kicker">English</span>
+        <h1>Privacy Policy</h1>
+        <p class="date">Effective November 12, 2026</p>
+
+        <p class="short">In short: SprinGo doesn’t ask you to sign up, shows no ads, collects no analytics and doesn’t track you. The app has no server of its own, and the developer receives no data from it. Your progress is stored only on your phone. Only two things ever leave the phone, both go to Apple, and only if you turn on the feature yourself: your coordinates, to find the name of your city, and, on some phones, the sound of your spoken answer, to recognize speech.</p>
+
+        <h2>Who we are</h2>
+        <p>“SprinGo: Interactive Stories” (the “app”) is a collection of interactive stories for iPhone; the first story is Ash and Glass. The developer is Yahor Zhelabanau, an individual. This policy explains what data the app processes, why, where it is stored and what of it reaches Apple.</p>
+
+        <h2>What we don’t do</h2>
+        <ul>
+          <li>We don’t create accounts and don’t ask for your name, email address, phone number or age.</li>
+          <li>We don’t use advertising, advertising identifiers, analytics services or third-party SDKs.</li>
+          <li>We don’t track you across other apps and websites.</li>
+          <li>We don’t sell or share your data with third parties. The only exception is the two Apple services described under “Microphone and speech recognition” and “Location”; they work only when you act.</li>
+          <li>The app has no server of its own: the app itself sends nothing over the internet.</li>
+        </ul>
+
+        <h2>What is stored on your phone</h2>
+        <p>So that the game remembers where you stopped, the device stores:</p>
+        <ul>
+          <li>the current run: the deal code and the list of choices you made, which “Continue” uses to take you back to your last card;</li>
+          <li>which scenes you have already seen, so they can be skipped;</li>
+          <li>the number of finished runs and a mark of when the reminder may be offered again;</li>
+          <li>sound settings (Music, Sounds);</li>
+          <li>the system identifiers of chronicles you saved to Photos yourself, so the game can show them under “Chronicles”.</li>
+        </ul>
+        <p>This data is not sent anywhere, and the developer can’t see it. It is deleted together with the app. If backups are turned on (iCloud or a computer), iOS includes app data in the backup; this is done by the system, and the developer has no access to backups.</p>
+
+        <h2>Camera</h2>
+        <p>The camera is used for the optional “Open the Seam in your room” feature on the screens between acts. Permission is requested only when you tap that button.</p>
+        <ul>
+          <li>The rear camera image is only shown on the screen, under the crack and the act title, while that screen is open.</li>
+          <li>The app takes no photos, records no video and receives no individual frames: the image is not saved or sent anywhere.</li>
+          <li>If you deny access, the screen plays as usual and the story doesn’t change.</li>
+        </ul>
+
+        <h2>Microphone and speech recognition</h2>
+        <p>The microphone and speech recognition are used for the optional “Answer out loud” button under a card: instead of swiping, you can say one of the two answers. On the first tap, iOS asks for two permissions in a row: Speech Recognition, then Microphone.</p>
+        <ul>
+          <li>The microphone turns on only after you tap the button and listens for no more than 8 seconds.</li>
+          <li>Speech is turned into text by the built-in iOS speech recognition service in the game language (English or Russian). If the phone can recognize that language on its own, the game requires on-device recognition, and the audio never leaves the phone. If it can’t, the audio of your answer is sent to Apple’s servers together with the card’s two answers (as a hint for the recognizer) and is processed under Apple’s privacy policy.</li>
+          <li>The app doesn’t record audio to a file and stores neither the audio nor the recognized text: the text is immediately compared with the answers on the card and discarded. The developer receives neither audio nor text.</li>
+          <li>If you deny access, the button disappears and swiping works as always.</li>
+        </ul>
+
+        <h2>Location</h2>
+        <p>In Act II, the screen header shows a “Where am I?” chip: the game names your city and the local sunset time. Access is requested only “While Using the App”, and only when you tap the chip.</p>
+        <ul>
+          <li>About one kilometer of accuracy is enough for the game; by default iOS gives it only your approximate location.</li>
+          <li>The location is determined once per run. If access is already granted, this happens by itself at the start of Act II, without a tap.</li>
+          <li>To get the city name, the coordinates are sent to Apple’s geocoding service. The sunset time is calculated on the phone. Without the internet the game shows only the sunset time.</li>
+          <li>Coordinates and the city name are not saved, don’t appear in the chronicle and are not sent to the developer. The city is shown only in the chip.</li>
+          <li>The app doesn’t track your location in the background and keeps no location history.</li>
+          <li>If you deny access, the chip disappears for the rest of the run, and nothing else changes.</li>
+        </ul>
+
+        <h2>Face ID and Touch ID</h2>
+        <p>Key decrees in the game are sealed with the “Regent’s Seal”. The seal is set with Face ID (Touch ID on phones that have it). The system prompt appears on the “Seal the decree” screen after you swipe a key card.</p>
+        <ul>
+          <li>iOS performs the check. The app receives only the result, success or failure: no image of your face, no fingerprint and no other biometric data.</li>
+          <li>If biometrics are unavailable or you decline, you set the seal by pressing and holding for one second.</li>
+          <li>Face ID is used only for this game mechanic and doesn’t protect anything.</li>
+        </ul>
+
+        <h2>Photos</h2>
+        <ul>
+          <li><b>Saving a chronicle.</b> The “Save chronicle” button on the result screen adds one picture to Photos. For this, iOS asks for add-only access, which doesn’t let the game see your library. The picture shows the outcome of the run, the act, the gauge values, the number of decrees and seals, the deal code and the date; it contains nothing about you. Like any picture, it is synced to iCloud Photos if you use it. To show the chronicle later, the game stores its system identifier on the phone.</li>
+          <li><b>The “Chronicles” section.</b> To show saved chronicles, the game needs read access to your photo library. It is requested when you open the section, and only if you have saved chronicles before. In the system prompt you can allow access to the whole library or only to selected photos. The game opens only the pictures it saved itself, by their identifiers; it doesn’t look through, analyze or send your other photos.</li>
+        </ul>
+        <p>If you deny access, saved chronicles stay in Photos and are just not shown in the game. You can share a chronicle without photo library access.</p>
+
+        <h2>Notifications</h2>
+        <p>After your first finished run the game offers one reminder: it first explains what the reminder is for, then iOS asks for permission.</p>
+        <ul>
+          <li>If you allow it, the game schedules one local reminder, “The Kingdom Waits”, a day after you leave the game, and cancels it when you come back.</li>
+          <li>Reminders are created on the device. There is no push server, and the app doesn’t receive a push notification token. There are no other notifications.</li>
+          <li>If the offer goes away without an answer, the game asks again no earlier than three finished runs later. After you decline in the system prompt, it doesn’t ask again.</li>
+        </ul>
+
+        <h2>Sharing</h2>
+        <p>The result screen has “Share chronicle” and “Send this deal” buttons. They open the iOS share sheet: you choose whom to send to and through which app. The app doesn’t know who the recipient is. A deal link of the form <code>ashglass://run?seed=…</code> contains only the deal code (a number): with it, your friend’s game starts with the same randomness.</p>
+
+        <h2>Apple services</h2>
+        <p>Speech recognition and geocoding are Apple services built into iOS. What Apple does with the data it receives is described in <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>.</p>
+        <p>As with any app, Apple may show the developer aggregated App Store statistics (such as the number of downloads) and crash reports from users who chose to share analytics with app developers in their iPhone privacy settings. This data is collected by Apple, not by the app, and doesn’t tell the developer who you are.</p>
+
+        <h2>Children</h2>
+        <p>The app is not made for children: the stories contain death, violence and mentions of alcohol and tobacco. We don’t collect personal data from anyone, children or adults.</p>
+
+        <h2>How to revoke permissions</h2>
+        <p>All permissions are optional: every feature has a fallback, and the game can be finished without them. You can turn off camera, microphone, speech recognition, location, Face ID, Photos and notification access at any time in Settings → SprinGo.</p>
+
+        <h2>How to delete your data</h2>
+        <p>Delete the app: the saved run and all settings go with it. Chronicles you saved to Photos stay there; you can delete them in the Photos app.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>If the app starts processing data differently, we will update this page and the date at the top before such a version is released.</p>
+
+        <h2>Contact</h2>
+        <p>Send privacy questions to <a href="mailto:springo.stories@gmail.com">springo.stories@gmail.com</a>.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <span>© 2026 <b>Yahor Zhelabanau</b></span>
+      <nav aria-label="Документы / Documents">
+        <a href="index.html#support">Поддержка · Support</a>
+        <a href="terms.html">Условия использования · Terms of Use</a>
+        <a href="privacy.html">Конфиденциальность · Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
